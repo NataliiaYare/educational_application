@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BENerd Educational App</title>
+    <script>
+        function displayDateTime() {
+            document.getElementById("date-time").innerHTML = new Date().toLocaleDateString();
+        }
+
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var namePattern = /^[a-zA-Z]{2,}$/;
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+            if (!namePattern.test(name)) {
+                alert("Please enter a valid name (letters only, at least 2 characters).");
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            setCookie("username", name, 7);
+            return true;
+        }
+
+        function setCookie(name, value, days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + expires + ";path=/";
+        }
+    </script>
+
+</head>
+
+<body onload="displayDateTime()">
+    <h1>Welcome to the BENerd Educational App</h1>
+    <p id="date-time"></p>
+
+    <form onsubmit="return validateForm();">
+
+        Name: <input type="text" id="name" required><br>
+        Email: <input type="email" id="email" required><br>
+        <input type="submit" value="Start">
+
+    </form>
+
+
+</body>
+
+</html>

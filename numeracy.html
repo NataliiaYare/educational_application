@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Numeracy Quiz</title>
+    <style>
+        .correct {
+            color: green;
+            font-size: larger;
+        }
+
+        .incorrect {
+            color: red;
+            font-size: larger;
+        }
+    </style>
+
+    <script>
+        var score = 0;
+        function checkAnswer(question, correctAnswer) {
+            var selectedAnswer = document.querySelector('input[name="' + question + '"]:checked');
+            var feedbackElement = document.getElementById(question + '-feedback');
+
+            if (selectedAnswer && selectedAnswer.value === correctAnswer) {
+                score++;
+                feedbackElement.innerHTML = "Correct";
+                feedbackElement.className = "correct";
+            }
+
+            else {
+                feedbackElement.innerHTML = "Incorrect. The correct answer is " + correctAnswer + ".";
+                feedbackElement.className = "incorrect";
+            }
+        }
+
+        function showScore() {
+            var scoreMessage = "Your score is: " + score + "/5.";
+            var finalMessage = score >= 3 ? "Congratulations, you passed!" : "Better luck next time. You failed.";
+            document.getElementById('score-summary').innerHTML = scoreMessage + finalMessage;
+            document.getElementById('score-summary').className = score >= 3 ? "correct" : "incorrect";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Basic Numeracy Quiz</h1>
+
+    <div>
+        <p>1. What is 2 + 2?</p>
+        <img src="numeracy_image1.jpg" alt="Math problem 2 + 2">
+        <form>
+            <input type="radio" name="q1" value="3"> 3<br>
+            <input type="radio" name="q1" value="4"> 4<br>
+            <input type="radio" name="q1" value="5"> 5<br>
+            <button type="button" onclick="checkAnswer('q1', '4')">Submit Answer</button>
+        </form>
+        <p id="q1-feedback"></p>
+    </div>
+
+    <div>
+        <p>2. What is 8 - 3?</p>
+        <img src="numeracy_image2.jpg" alt="Math problem 8 - 3">
+        <form>
+            <input type="radio" name="q2" value="9"> 9<br>
+            <input type="radio" name="q2" value="2"> 2<br>
+            <input type="radio" name="q2" value="5"> 5<br>
+            <button type="button" onclick="checkAnswer('q2', '5')">Submit Answer</button>
+        </form>
+        <p id="q2-feedback"></p>
+    </div>
+
+    <div>
+        <p>3. Guess what number is on my mind!</p>
+        <img src="numeracy_image3.jpg" alt="Math problem guess a number.">
+        <form>
+            <input type="radio" name="q3" value="7"> 7<br>
+            <input type="radio" name="q3" value="12"> 12<br>
+            <input type="radio" name="q3" value="3"> 3<br>
+            <button type="button" onclick="checkAnswer('q3', '3')">Submit Answer</button>
+        </form>
+        <p id="q3-feedback"></p>
+    </div>
+
+    <div>
+        <p>4. What is 2 * 9?</p>
+        <img src="numeracy_image4.jpg" alt="Math problem 2 * 9">
+        <form>
+            <input type="radio" name="q4" value="18"> 18<br>
+            <input type="radio" name="q4" value="19"> 19<br>
+            <input type="radio" name="q4" value="20"> 20<br>
+            <button type="button" onclick="checkAnswer('q4', '18')">Submit Answer</button>
+        </form>
+        <p id="q4-feedback"></p>
+    </div>
+
+    <div>
+        <p>5. What is 9 / 3?</p>
+        <img src="numeracy_image4.jpg" alt="Math problem 2 * 9">
+        <form>
+            <input type="radio" name="q5" value="2"> 2<br>
+            <input type="radio" name="q5" value="3"> 3<br>
+            <input type="radio" name="q5" value="4"> 4<br>
+            <button type="button" onclick="checkAnswer('q5', '3')">Submit Answer</button>
+        </form>
+        <p id="q5-feedback"></p>
+    </div>
+
+
+    <button onclick="showScore()">Finish Quiz</button>
+    <p id="score-summary"></p>
+
+</body>
+
+</html>

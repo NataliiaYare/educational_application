@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Page</title>
+    <script>
+        function greetUser() {
+            var userName = document.cookie.split('; ').find(row => row.startsWith('username')).split('=')[1];
+            if (userName) {
+                document.getElementById("welcome-message").innerHTML = "Welcome, " + userName + "!";
+            }
+        }
+    </script>
+</head>
+
+<body onload="greetUser()">
+    <h1 id="welcome-message"></h1>
+    <ul>
+        <li><a href="numeracy.html">Basic Numeracy</a></li>
+        <li><a href="literacy.html">Basic Literacy</a></li>
+        <li><a href="health.html">Health and Wellbeing</a></li>
+        <li><a href="scottish_history.html">Scottish History</a></li>
+        <li><a href="social_awareness.html">Social Awareness</a></li>
+    </ul>
+
+</body>
+
+</html>
